@@ -20,18 +20,32 @@ if ( !defined('EQDKP_INC') ){
 	header('HTTP/1.0 404 Not Found');exit;
 }
 $german_array = array(
+	'factions' => array(
+		'republic'	=> 'Rebublik',
+		'imperial'	=> 'Imperium'
+	),
 	'classes' => array(
-	#  id	name in(republic, imperium)
-		0	=> array('Unbekannt', 'Unbekannt'),
-		1	=> array('Frontkaempfer', 'Powertech'),
-        2	=> array('Kommando', 'Soeldner'),
-		3	=> array('Schurke', 'Saboteur'),
-		4	=> array('Revolverheld', 'Scharfschuetze'),
-		5	=> array('Gelehrter', 'Hexer'),
-		6	=> array('Schatten', 'Attentaeter'),
-		7	=> array('Waechter', 'Marodeur'),
-		8	=> array('Hueter', 'Juggernaut'),
+		0	=> 'Unbekannt',
 
+		#republic
+		1	=> 'Frontkaempfer',
+        2	=> 'Kommando',
+		3	=> 'Schurke',
+		4	=> 'Revolverheld',
+		5	=> 'Gelehrter',
+		6	=> 'Schatten',
+		7	=> 'Waechter',
+		8	=> 'Hueter',
+
+		# imperium
+		9	=> 'Powertech',
+		10	=> 'Soeldner',
+		11	=> 'Saboteur',
+		12	=> 'Scharfschuetze',
+		13	=> 'Hexer',
+		14	=> 'Attentaeter',
+		15	=> 'Marodeur',
+		16	=> 'Juggernaut',
 	),
 	'races' => array(
 		'Unknown',
@@ -45,10 +59,6 @@ $german_array = array(
 		'Zabrak',
 		'Cyborg',
 		'Cathar',
-	),
-	'factions' => array(
-		'Rebublik',
-		'Imperium'
 	),
 	'roles' => array(
 		1 => array(2, 3, 5),
