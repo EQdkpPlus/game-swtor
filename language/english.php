@@ -61,30 +61,27 @@ $english_array =  array(
 		'Cathar',
 	),
 	'roles' => array(
-		1 => array(2, 3, 5),
-		2 => array(1, 6, 8),
-		3 => array(2, 4, 5),
-		4 => array(1, 3, 6, 7, 8)
+		1	=> 'Healer',
+		2	=> 'Tank',
+		3	=> 'Range-DD',
+		4	=> 'Melee',
 	),
 	'lang' => array(
 		'swtor'						=> 'Star Wars: The Old Republic',
 
 		//Admin Settings
 		'core_sett_fs_gamesettings'	=> 'SWToR Settings',
-		'swtor_faction'				=> 'Faction',
-		'swtor_faction_help'		=> 'The faction is used to hide classes of the opposing faction.',
-
-		// Roles
-		'role1'						=> 'Healer',
-		'role2'						=> 'Tank',
-		'role3'						=> 'Range-DD',
-		'role4'						=> 'Melee',
+		'uc_one_faction'		=> 'Restrict the class selection to a specific faction?',
+		'uc_faction'			=> 'Faction',
+		'uc_faction_help'		=> 'The classes of the opposing faction cannot be selected anymore.',
 
 		// Profile information
 		'uc_gender'					=> 'Gender',
 		'uc_male'					=> 'Male',
 		'uc_female'					=> 'Female',
 		'uc_guild'					=> 'Guild',
+		'uc_race'					=> 'Race',
+		'uc_class'					=> 'Class',
 	),
 );
 

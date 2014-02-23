@@ -21,7 +21,7 @@ if ( !defined('EQDKP_INC') ){
 }
 $german_array = array(
 	'factions' => array(
-		'republic'	=> 'Rebublik',
+		'republic'	=> 'Republik',
 		'imperial'	=> 'Imperium'
 	),
 	'classes' => array(
@@ -61,18 +61,19 @@ $german_array = array(
 		'Cathar',
 	),
 	'roles' => array(
-		1 => array(2, 3, 5),
-		2 => array(1, 6, 8),
-		3 => array(2, 4, 5),
-		4 => array(1, 3, 6, 7, 8)
+		1	=> 'Heiler',
+		2	=> 'Tank',
+		3	=> 'DD Fernkampf',
+		4	=> 'DD Nahkampf',
 	),
 	'lang' => array(
 		'swtor'						=> 'Star Wars: The Old Republic',
 
 		//Admin Settings
 		'core_sett_fs_gamesettings'	=> 'SWToR Einstellungen',
-		'swtor_faction'				=> 'Fraktion',
-		'swtor_faction_help'		=> 'Die Fraktion dient dem Ausblenden der Klassen der jeweils anderen Fraktion.',
+		'uc_one_faction'		=> 'Klassenauswahl auf bestimmte Fraktion einschränken?',
+		'uc_faction'			=> 'Fraktion',
+		'uc_faction_help'		=> 'Die Klassen der gegnerischen Fraktion können nicht mehr ausgewählt werden.',
 
 		// Roles
 		'role1'						=> 'Heiler',
@@ -85,6 +86,8 @@ $german_array = array(
 		'uc_male'					=> 'Männlich',
 		'uc_female'					=> 'Weiblich',
 		'uc_guild'					=> 'Gilde',
+		'uc_race'					=> 'Rasse',
+		'uc_class'					=> 'Klasse',
 	),
 );
 

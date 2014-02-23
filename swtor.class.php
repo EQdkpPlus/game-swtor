@@ -42,7 +42,7 @@ if(!class_exists('swtor')) {
 			array(
 				'name'		=> 'faction',
 				'type'		=> 'factions',
-				'admin' 	=> true,
+				'admin' 	=> false,
 				'decorate'	=> false,
 				'parent'	=> false,
 			),
@@ -85,6 +85,13 @@ if(!class_exists('swtor')) {
 			),
 		);
 		
+		protected $default_roles = array(
+			1 => array(2, 3, 5),
+			2 => array(1, 6, 8),
+			3 => array(2, 4, 5),
+			4 => array(1, 3, 6, 7, 8)
+		);
+		
 		/**
 		* Returns ImageTag with class-icon
 		*
@@ -93,13 +100,13 @@ if(!class_exists('swtor')) {
 		* @param bool $pathonly
 		* @return html string
 		*/
-		public function decorate_classes($class_id, $big=false, $pathonly=false) {
-		$big = ($size > 40) ? '_b' : '';
-		$icon_path = $this->root_path.'games/'.$this->this_game.'/classes/'.$class_id.$big;
-		if(is_file($icon_path)){
-			return ($pathonly) ? $icon_path : '<img src="'.$icon_path.'" width="'.$size.'" height="'.$size.'" alt="class '.$class_id.'" class="'.$this->this_game.'_classicon classicon'.'" title="'.$this->game->get_name('classes', $class_id).'" />';
-		}
-		return false;
+		public function decorate_classes($class_id, $profile=array(), $size=16, $pathonly=false) {
+			$big = ($size > 40) ? '_b' : '';
+			if(is_file($this->root_path.'games/'.$this->this_game.'/icons/classes/'.$class_id.$big.'.png')){
+				$icon_path = $this->server_path.'games/'.$this->this_game.'/icons/classes/'.$class_id.$big.'.png';
+				return ($pathonly) ? $icon_path : '<img src="'.$icon_path.'" width="'.$size.'" height="'.$size.'" alt="class '.$class_id.'" class="'.$this->this_game.'_classicon classicon'.'" title="'.$this->game->get_name('classes', $class_id).'" />';
+			}
+			return false;
 		}
 
 		/**
@@ -142,15 +149,39 @@ if(!class_exists('swtor')) {
 			return $info;
 		}
 		
+		/**
+		 * class-dependency array
+		 *
+		 * @return array
+		 */
+		public function get_class_dependencies() {
+			$pf_faction = $this->pdh->get('profile_fields', 'fields', array('faction'));
+			if($this->config->get('uc_one_faction')) {
+				$this->class_dependencies[0]['admin'] = true;
+				// hide faction-field in profile-settings
+				if($pf_faction['type'] != 'hidden') {
+					$this->db->query("UPDATE __member_profilefields SET type = 'hidden' WHERE name='faction';");
+					$this->pdh->enqueue_hook('game_update');
+					$this->pdh->process_hook_queue();
+				}
+			} else {
+				// set type of faction-field back to dropdown
+				if($pf_faction['type'] != 'dropdown') {	
+					$this->db->query("UPDATE __member_profilefields SET type = 'dropdown' WHERE name='faction';");
+					$this->pdh->enqueue_hook('game_update');
+					$this->pdh->process_hook_queue();
+				}
+			}
+			return $this->class_dependencies;
+		}
+		
 		public function admin_settings() {
-			$admin_settings = array('swtor_faction'	=> array(
-				'lang'		=> 'swtor_faction',
-				'type'		=> 'dropdown',
-				'size'		=> '1',
-				'options'	=> $this->game->get('factions'),
-				'default'	=> 0
-			));
-			return $admin_settings;
+			return array(
+				'uc_one_faction' => array(
+					'type'	=> 'radio',
+					'lang'	=> 'uc_one_faction',
+				)
+			);
 		}
 	}
 }
