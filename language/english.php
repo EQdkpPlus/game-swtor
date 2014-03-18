@@ -48,17 +48,17 @@ $english_array =  array(
 		16	=> 'Juggernaut',
 	),
 	'races' => array(
-		'Unknown',
-		'Human',
-		'Rattataki',
-		'Twi\'lek',
-		'Chiss',
-		'Sith Pureblood',
-		'Miraluka',
-		'Mirialan',
-		'Zabrak',
-		'Cyborg',
-		'Cathar',
+		0	=> 'Unknown',
+		1	=> 'Human',
+		2	=> 'Rattataki',
+		3	=> 'Twi\'lek',
+		4	=> 'Chiss',
+		5	=> 'Sith Pureblood',
+		6	=> 'Miraluka',
+		7	=> 'Mirialan',
+		8	=> 'Zabrak',
+		9	=> 'Cyborg',
+		10	=> 'Cathar',
 	),
 	'roles' => array(
 		1	=> 'Healer',
@@ -71,9 +71,9 @@ $english_array =  array(
 
 		//Admin Settings
 		'core_sett_fs_gamesettings'	=> 'SWToR Settings',
-		'uc_one_faction'		=> 'Restrict the class selection to a specific faction?',
-		'uc_faction'			=> 'Faction',
-		'uc_faction_help'		=> 'The classes of the opposing faction cannot be selected anymore.',
+		'uc_one_faction'			=> 'Restrict the class selection to a specific faction?',
+		'uc_faction'				=> 'Faction',
+		'uc_faction_help'			=> 'The classes of the opposing faction cannot be selected anymore.',
 
 		// Profile information
 		'uc_gender'					=> 'Gender',

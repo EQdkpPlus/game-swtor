@@ -139,8 +139,6 @@ if(!class_exists('swtor')) {
 		}
 
 		public function get_OnChangeInfos($install=false){
-			//classcolors
-			$info['class_color'] = array();
 			$info['aq'] = array();
 
 			//Do this SQL Query NOT if the Eqdkp is installed -> only @ the first install

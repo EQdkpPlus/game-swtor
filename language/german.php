@@ -48,17 +48,17 @@ $german_array = array(
 		16	=> 'Juggernaut',
 	),
 	'races' => array(
-		'Unknown',
-		'Mensch',
-		'Rattataki',
-		'Twi\'lek',
-		'Chiss',
-		'Reinblut Sith',
-		'Miraluka',
-		'Mirialan',
-		'Zabrak',
-		'Cyborg',
-		'Cathar',
+		0	=> 'Unknown',
+		1	=> 'Mensch',
+		2	=> 'Rattataki',
+		3	=> 'Twi\'lek',
+		4	=> 'Chiss',
+		5	=> 'Reinblut Sith',
+		6	=> 'Miraluka',
+		7	=> 'Mirialan',
+		8	=> 'Zabrak',
+		9	=> 'Cyborg',
+		10	=> 'Cathar',
 	),
 	'roles' => array(
 		1	=> 'Heiler',
@@ -71,9 +71,9 @@ $german_array = array(
 
 		//Admin Settings
 		'core_sett_fs_gamesettings'	=> 'SWToR Einstellungen',
-		'uc_one_faction'		=> 'Klassenauswahl auf bestimmte Fraktion einschränken?',
-		'uc_faction'			=> 'Fraktion',
-		'uc_faction_help'		=> 'Die Klassen der gegnerischen Fraktion können nicht mehr ausgewählt werden.',
+		'uc_one_faction'			=> 'Klassenauswahl auf bestimmte Fraktion einschränken?',
+		'uc_faction'				=> 'Fraktion',
+		'uc_faction_help'			=> 'Die Klassen der gegnerischen Fraktion können nicht mehr ausgewählt werden.',
 
 		// Roles
 		'role1'						=> 'Heiler',
