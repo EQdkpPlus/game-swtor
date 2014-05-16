@@ -138,13 +138,8 @@ if(!class_exists('swtor')) {
 			return $fields;
 		}
 
-		public function get_OnChangeInfos($install=false){
-			$info['aq'] = array();
-
-			//Do this SQL Query NOT if the Eqdkp is installed -> only @ the first install
-			#if($install){
-			#}
-			return $info;
+		public function install($install=false){
+			return array();
 		}
 		
 		/**
