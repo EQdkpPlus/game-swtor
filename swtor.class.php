@@ -4,15 +4,14 @@
  * License:		Creative Commons - Attribution-Noncommercial-Share Alike 3.0 Unported
  * Link:		http://creativecommons.org/licenses/by-nc-sa/3.0/
  * -----------------------------------------------------------------------
- * Began:		2011
  * Date:		$Date$
  * -----------------------------------------------------------------------
  * @author		$Author$
- * @copyright	2006-2011 EQdkp-Plus Developer Team
+ * @copyright	2006-2014 EQdkp-Plus Developer Team
  * @link		http://eqdkp-plus.com
  * @package		eqdkp-plus
  * @version		$Rev$
- * 
+ *
  * $Id$
  */
 
@@ -22,22 +21,22 @@ if ( !defined('EQDKP_INC') ){
 
 if(!class_exists('swtor')) {
 	class swtor extends game_generic {
+		protected static $apiLevel	= 20;
+		public $version				= '1.2';
+		protected $this_game		= 'swtor';
+		protected $types			= array('classes', 'races', 'factions', 'roles');
+		protected $classes			= array();
+		protected $races			= array();
+		protected $roles			= array();
+		protected $factions			= array();
+		protected $filters			= array();
+		public $langs				= array('english', 'german');
 
-		protected $this_game	= 'swtor';
-		protected $types		= array('classes', 'races', 'factions', 'roles');
-		protected $classes		= array();
-		protected $races		= array();
-		protected $roles		= array();
-		protected $factions		= array();
-		protected $filters		= array();
-		public $langs			= array('english', 'german');
+		protected $glang			= array();
+		protected $lang_file		= array();
+		protected $path				= false;
+		public $lang				= false;
 
-		protected $glang		= array();
-		protected $lang_file	= array();
-		protected $path			= false;
-		public $lang			= false;
-		public $version			= '1.2';
-		
 		protected $class_dependencies = array(
 			array(
 				'name'		=> 'faction',
@@ -84,22 +83,14 @@ if(!class_exists('swtor')) {
 				),
 			),
 		);
-		
+
 		protected $default_roles = array(
 			1 => array(2, 3, 5),
 			2 => array(1, 6, 8),
 			3 => array(2, 4, 5),
 			4 => array(1, 3, 6, 7, 8)
 		);
-		
-		/**
-		* Returns ImageTag with class-icon
-		*
-		* @param int $class_id
-		* @param bool $big
-		* @param bool $pathonly
-		* @return html string
-		*/
+
 		public function decorate_classes($class_id, $profile=array(), $size=16, $pathonly=false) {
 			$big = ($size > 40) ? '_b' : '';
 			if(is_file($this->root_path.'games/'.$this->this_game.'/icons/classes/'.$class_id.$big.'.png')){
@@ -109,13 +100,8 @@ if(!class_exists('swtor')) {
 			return false;
 		}
 
-		/**
-		* Initialises filters
-		*
-		* @param array $langs
-		*/
 		protected function load_filters($langs) {}
-		
+
 		public function profilefields() {
 			$fields = array(
 				'gender'	=> array(
@@ -141,12 +127,7 @@ if(!class_exists('swtor')) {
 		public function install($install=false){
 			return array();
 		}
-		
-		/**
-		 * class-dependency array
-		 *
-		 * @return array
-		 */
+
 		public function get_class_dependencies() {
 			$pf_faction = $this->pdh->get('profile_fields', 'fields', array('faction'));
 			if($this->config->get('uc_one_faction')) {
@@ -167,7 +148,7 @@ if(!class_exists('swtor')) {
 			}
 			return $this->class_dependencies;
 		}
-		
+
 		public function admin_settings() {
 			return array(
 				'uc_one_faction' => array(
