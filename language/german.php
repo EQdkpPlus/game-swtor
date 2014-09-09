@@ -29,7 +29,7 @@ $german_array = array(
 
 		#republic
 		1	=> 'Frontkaempfer',
-        2	=> 'Kommando',
+		2	=> 'Kommando',
 		3	=> 'Schurke',
 		4	=> 'Revolverheld',
 		5	=> 'Gelehrter',

@@ -29,7 +29,7 @@ $english_array =  array(
 
 		#republic
 		1	=> 'Vanguard',
-        2	=> 'Commando',
+		2	=> 'Commando',
 		3	=> 'Scoundrel',
 		4	=> 'Gunslinger',
 		5	=> 'Sage',

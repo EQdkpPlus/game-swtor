@@ -110,7 +110,8 @@ if(!class_exists('swtor')) {
 					'lang'			=> 'uc_gender',
 					'options'		=> array('male' => 'uc_male', 'female' => 'uc_female'),
 					'undeletable'	=> true,
-					'visible'		=> true
+					'visible'		=> true,
+					'tolang'		=> true
 				),
 				'guild'	=> array(
 					'type'			=> 'text',
