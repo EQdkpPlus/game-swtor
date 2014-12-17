@@ -1,6 +1,6 @@
 <?php
 /*	Project:	EQdkp-Plus
- *	Package:	Star Wars - the old republic game package
+ *	Package:	EQdkp-Plus Language File
  *	Link:		http://eqdkp-plus.eu
  *
  *	Copyright (C) 2006-2015 EQdkp-Plus Developer Team
@@ -18,74 +18,77 @@
  *	You should have received a copy of the GNU Affero General Public License
  *	along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-if ( !defined('EQDKP_INC') ){
-	header('HTTP/1.0 404 Not Found');exit;
+ 
+if (!defined('EQDKP_INC')) {
+	die('You cannot access this file directly.');
 }
-$english_array =  array(
-	'factions' => array(
-		'republic'	=> 'Republic',
-		'imperial'	=> 'Empire'
-	),
-	'classes' => array(
-		0	=> 'Unknown',
 
-		#republic
-		1	=> 'Vanguard',
-		2	=> 'Commando',
-		3	=> 'Scoundrel',
-		4	=> 'Gunslinger',
-		5	=> 'Sage',
-		6	=> 'Shadow',
-		7	=> 'Sentinel',
-		8	=> 'Guardian',
+//Language: English	
+//Created by EQdkp Plus Translation Tool on  2014-12-17 21:28
+//File: games/swtor/language/english.php
+//Source-Language: german
 
-		# imperium
-		9	=> 'Powertech',
-		10	=> 'Mercenary',
-		11	=> 'Operative',
-		12	=> 'Sniper',
-		13	=> 'Sorcerer',
-		14	=> 'Assassin',
-		15	=> 'Marauder',
-		16	=> 'Juggernaut',
+$english_array = array( 
+	"factions" => array(
+	"republic" => 'Republic',
+	"imperial" => 'Empire',
 	),
-	'races' => array(
-		0	=> 'Unknown',
-		1	=> 'Human',
-		2	=> 'Rattataki',
-		3	=> 'Twi\'lek',
-		4	=> 'Chiss',
-		5	=> 'Sith Pureblood',
-		6	=> 'Miraluka',
-		7	=> 'Mirialan',
-		8	=> 'Zabrak',
-		9	=> 'Cyborg',
-		10	=> 'Cathar',
+	"classes" => array(
+	0 => 'Unknown',
+	1 => 'Vanguard',
+	2 => 'Commando',
+	3 => 'Scoundrel',
+	4 => 'Gunslinger',
+	5 => 'Sage',
+	6 => 'Shadow',
+	7 => 'Sentinel',
+	8 => 'Guardian',
+	9 => 'Powertech',
+	10 => 'Mercenary',
+	11 => 'Operative',
+	12 => 'Sniper',
+	13 => 'Sorcerer',
+	14 => 'Assassin',
+	15 => 'Marauder',
+	16 => 'Juggernaut',
 	),
-	'roles' => array(
-		1	=> 'Healer',
-		2	=> 'Tank',
-		3	=> 'Range-DD',
-		4	=> 'Melee',
+	"races" => array(
+	0 => 'Unknown',
+	1 => 'Human',
+	2 => 'Rattataki',
+	3 => 'Twi\'lek',
+	4 => 'Chiss',
+	5 => 'Sith Pureblood',
+	6 => 'Miraluka',
+	7 => 'Mirialan',
+	8 => 'Zabrak',
+	9 => 'Cyborg',
+	10 => 'Cathar',
 	),
-	'lang' => array(
-		'swtor'						=> 'Star Wars: The Old Republic',
-
-		//Admin Settings
-		'core_sett_fs_gamesettings'	=> 'SWToR Settings',
-		'uc_one_faction'			=> 'Restrict the class selection to a specific faction?',
-		'uc_faction'				=> 'Faction',
-		'uc_faction_help'			=> 'The classes of the opposing faction cannot be selected anymore.',
-
-		// Profile information
-		'uc_gender'					=> 'Gender',
-		'uc_male'					=> 'Male',
-		'uc_female'					=> 'Female',
-		'uc_guild'					=> 'Guild',
-		'uc_race'					=> 'Race',
-		'uc_class'					=> 'Class',
+	"roles" => array(
+	1 => 'Healer',
+	2 => 'Tank',
+	3 => 'Range-DD',
+	4 => 'Melee',
 	),
+	"lang" => array(
+	"swtor" => 'Star Wars: The Old Republic',
+	"core_sett_fs_gamesettings" => 'SWToR Settings',
+	"uc_one_faction" => 'Restrict the class selection to a specific faction?',
+	"uc_faction" => 'Faction',
+	"uc_faction_help" => 'The classes of the opposing faction cannot be selected anymore.',
+	"role1" => 'Healer',
+	"role2" => 'Tank',
+	"role3" => 'Range-DD',
+	"role4" => 'Melee',
+	"uc_gender" => 'Gender',
+	"uc_male" => 'Male',
+	"uc_female" => 'Female',
+	"uc_guild" => 'Guild',
+	"uc_race" => 'Race',
+	"uc_class" => 'Class',
+	),
+	
 );
 
 ?>
