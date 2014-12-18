@@ -1,6 +1,6 @@
 <?php
 /*	Project:	EQdkp-Plus
- *	Package:	Star Wars - the old republic game package
+ *	Package:	Star Wars - The Old Republic game package
  *	Link:		http://eqdkp-plus.eu
  *
  *	Copyright (C) 2006-2015 EQdkp-Plus Developer Team
@@ -26,9 +26,10 @@ if ( !defined('EQDKP_INC') ){
 if(!class_exists('swtor')) {
 	class swtor extends game_generic {
 		protected static $apiLevel	= 20;
-		public $version				= '1.2';
+		public $version				= '2.0.1';
 		protected $this_game		= 'swtor';
-		protected $types			= array('classes', 'races', 'factions', 'roles');
+		public $author				= "Anakyn";
+		protected $types			= array('classes', 'races', 'factions', 'roles', 'skills','filters', 'realmlist', 'professions');
 		protected $classes			= array();
 		protected $races			= array();
 		protected $roles			= array();
@@ -56,8 +57,8 @@ if(!class_exists('swtor')) {
 				'decorate'	=> true,
 				'parent'	=> array(
 					'faction' => array(
-						'republic'	=> array(0,1,2,3,4,5,6,7,8),
-						'imperial'	=> array(0,9,10,11,12,13,14,15,16),
+						'republic'	=> array(0,1,2,3,4,5,6,7,8,9,10),
+						'imperial'	=> array(0,1,2,3,4,5,6,7,8,9,10),
 					),
 				),
 			),
@@ -71,43 +72,189 @@ if(!class_exists('swtor')) {
 				'roster'	=> true,
 				'recruitment' => true,
 				'parent'	=> array(
-					'race' => array(
-						0 	=> 'all',											// Unknown
-						1 	=> array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16),	// Human
-						2 	=> array(9,10,11,12,13,14),							// Rattataki
-						3 	=> array(3,4,5,6,7,8,13,14),						// Twi'lek
-						4 	=> array(9,10,11,12),								// Chiss
-						5 	=> array(15,16,13,14),								// Sith Pureblood
-						6 	=> array(5,6,7,8),									// Miraluka
-						7 	=> array(1,2,3,4,5,6,7,8),							// Mirialan
-						8 	=> array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16),	// Zabrak
-						9 	=> array(1,2,3,4,9,10,11,12,15,16),					// Cyborg
-						10 	=> array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16),	// Cathar
+					'faction' => array(
+						'republic' 	=> array(0,1,2,3,4,5,6,7,8),	// 
+						'imperial' 	=> array(0,9,10,11,12,13,14,15,16),	// 
+					),
+				),
+			),
+			array(
+				'name'		=> 'skill',
+				'type'		=> 'skills',
+				'admin'		=> false,
+				'decorate'	=> false,
+				'recruitment' => true,
+				'parent'	=> array(
+					'class' => array(
+						0 	=> array(20),			// Unbekannt
+						1 	=> array(0,1,48),		// Frontkämpfer		neu
+						2 	=> array(2,3,4),		// Kommando			neu
+						3 	=> array(15,16,45),		// Schurke			neu
+						4 	=> array(17,18,19),		// Revolverheld		neu
+						5 	=> array(5,6,7),		// Gelehrter		neu
+						6 	=> array(8, 9, 43),		// Schatten			neu
+						7 	=> array(10,11,12),		// Wächter 			neu
+						8 	=> array(13,14,42),		// Hüter 			neu
+						9	=> array(23,24,25),		// Powertech		neu
+						10	=> array(21,22,47),		// Soeldner			neu
+						11	=> array(37,38,39),		// Saboteur			neu
+						12	=> array(35,36,46),		// Scharfschuetze	neu
+						13	=> array(30,31,32),		// Hexer			neu
+						14	=> array(33,34,44),		// Attentaeter		neu
+						15	=> array(26,27,28),		// Marodeur 		neu
+						16	=> array(29,40,41),		// Juggernaut		neu
 					),
 				),
 			),
 		);
 
-		protected $default_roles = array(
-			1 => array(2, 3, 5),
-			2 => array(1, 6, 8),
-			3 => array(2, 4, 5),
-			4 => array(1, 3, 6, 7, 8)
+		public $default_roles = array( 
+			1 => array(2, 3, 5, 10, 13),
+			2 => array(1, 6, 8, 9, 14, 16),
+			3 => array(1, 2,3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
+			4 => array(1, 2,3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
+		);
+		protected $class_colors = array(
+			1	=> '#6ce31c',
+			2	=> '#38a450',
+			3	=> '#af6b1d',
+			4	=> '#ebed5c',
+			5	=> '#308fa1',
+			6	=> '#284fb8',
+			7	=> '#c72d35',
+			8	=> '#896ccb',
+			9	=> '#6ce31c',
+			10	=> '#38a450',
+			11	=> '#af6b1d',
+			12	=> '#ebed5c',
+			13	=> '#308fa1',
+			14	=> '#284fb8',
+			15	=> '#c72d35',
+			16	=> '#896ccb',
 		);
 
-		public function decorate_classes($class_id, $profile=array(), $size=16, $pathonly=false) {
-			$big = ($size > 40) ? '_b' : '';
-			if(is_file($this->root_path.'games/'.$this->this_game.'/icons/classes/'.$class_id.$big.'.png')){
-				$icon_path = $this->server_path.'games/'.$this->this_game.'/icons/classes/'.$class_id.$big.'.png';
-				return ($pathonly) ? $icon_path : '<img src="'.$icon_path.'" width="'.$size.'" height="'.$size.'" alt="class '.$class_id.'" class="'.$this->this_game.'_classicon classicon'.'" title="'.$this->game->get_name('classes', $class_id).'" />';
+		public function install($blnEQdkpInstall=false){
+
+			$arrClassicEventIDs = array();
+			//Operation Swtor 1.0
+			$arrClassicEventIDs[] = $this->game->addEvent($this->glang('sm_ewigekammer'), 0, "s.png");
+			$arrClassicEventIDs[] = $this->game->addEvent($this->glang('hc_ewigekammer'), 0, "h.png");
+			$arrClassicEventIDs[] = $this->game->addEvent($this->glang('nm_ewigekammer'), 0, "n.png");
+			$arrClassicEventIDs[] = $this->game->addEvent($this->glang('sm_karaggaspalast'), 0, "s.png");
+			$arrClassicEventIDs[] = $this->game->addEvent($this->glang('hc_karaggaspalast'), 0, "h.png");
+			$arrClassicEventIDs[] = $this->game->addEvent($this->glang('nm_karaggaspalast'), 0, "n.png");
+			$arrClassicEventIDs[] = $this->game->addEvent($this->glang('sm_explosivkonflikt'), 0, "s.png");
+			$arrClassicEventIDs[] = $this->game->addEvent($this->glang('hc_explosivkonflikt'), 0, "h.png");
+			$arrClassicEventIDs[] = $this->game->addEvent($this->glang('nm_explosivkonflikt'), 0, "m.png");
+
+			//Operation Swtor 2.0
+			$arrEventIDs = array();
+			$arrEventIDs[] = $this->game->addEvent($this->glang('sm_abschaum'), 0, "s.png");
+			$arrEventIDs[] = $this->game->addEvent($this->glang('hc_abschaum'), 0, "h.png");
+			$arrEventIDs[] = $this->game->addEvent($this->glang('nm_abschaum'), 0, "n.png");
+			$arrEventIDs[] = $this->game->addEvent($this->glang('sm_schrecken'), 0, "s.png");
+			$arrEventIDs[] = $this->game->addEvent($this->glang('hc_schrecken'), 0, "h.png");
+			$arrEventIDs[] = $this->game->addEvent($this->glang('nm_schrecken'), 0, "n.png");
+			$arrEventIDs[] = $this->game->addEvent($this->glang('sm_s_festung'), 0, "s.png");
+			$arrEventIDs[] = $this->game->addEvent($this->glang('hc_s_festung'), 0, "h.png");
+			$arrEventIDs[] = $this->game->addEvent($this->glang('nm_s_festung'), 0, "n.png");
+			$arrEventIDs[] = $this->game->addEvent($this->glang('sm_s_palast'), 0, "s.png");
+			$arrEventIDs[] = $this->game->addEvent($this->glang('hc_s_palast'), 0, "h.png");
+			$arrEventIDs[] = $this->game->addEvent($this->glang('nm_s_palast'), 0, "n.png");
+			$arrEventIDs[] = $this->game->addEvent($this->glang('sm_tbh'), 0, "s.png");
+			$arrEventIDs[] = $this->game->addEvent($this->glang('hc_tbh'), 0, "h.png");
+			$arrEventIDs[] = $this->game->addEvent($this->glang('nm_tbh'), 0, "n.png");
+			
+			//Operation Swtor 3.0
+			$arrRevanEventIDs = array();
+			$arrRevanEventIDs[] = $this->game->addEvent($this->glang('sm_wueter'), 0, "s.png");
+			$arrRevanEventIDs[] = $this->game->addEvent($this->glang('hc_wueter'), 0, "h.png");
+			$arrRevanEventIDs[] = $this->game->addEvent($this->glang('nm_wueter'), 0, "n.png");
+			$arrRevanEventIDs[] = $this->game->addEvent($this->glang('sm_tempel'), 0, "s.png");
+			$arrRevanEventIDs[] = $this->game->addEvent($this->glang('hc_tempel'), 0, "h.png");
+			$arrRevanEventIDs[] = $this->game->addEvent($this->glang('nm_tempel'), 0, "n.png");
+			
+			//itempools
+			$intItempoolClassic = $this->game->addItempool("SWtoR 1.0", "SWtoR 1.0 Itempool");
+			$intItempoolGalactic = $this->game->addItempool("SWtoR 2.0", "SWtoR 2.0 Itempool");
+			$intItempoolRevan = $this->game->addItempool("SWtoR 3.0", "SWtoR 3.0 Itempool");
+
+			
+			$this->game->addMultiDKPPool("SWtoR 1.0", "SWtoR MultiDKPPool", $arrClassicEventIDs, array($intItempoolClassic));
+			$this->game->addMultiDKPPool("SWtoR 2.0", "SWtoR MultiDKPPool", $arrEventIDs, array($intItempoolGalactic));
+			$this->game->addMultiDKPPool("SWtoR 3.0", "SWtoR MultiDKPPool", $arrRevanEventIDs, array($intItempoolRevan));
+			
+			//Links
+			$this->game->addLink('Fight-Arena', 'http://www.fight-arena.de');
+
+			//Kalender
+			//$this->pdh->put('calendars', 'add_calendar', array(0, 'Raid 2', '#ffd700', 0, 1, 1, 'swtor'));
+			//$this->pdh->put('calendars', 'add_calendar', array(99, 'Raid 2', '#ffd700', 0, 1, 1));
+			//$this->db->query("INSERT INTO __calendars (id,name,color,private,feed,system, type, restricted) VALUES ('99','Raid 2','#ffd700','0',NULL,'0', '1', '0');");
+			
+			//Ranks
+			$this->game->addRank(0, "Guildmaster");
+			$this->game->addRank(1, "Officer");
+			$this->game->addRank(2, "Veteran");
+			$this->game->addRank(3, "Member");
+			$this->game->addRank(4, "Initiate", true);
+			
+			//Raidgroups
+			$this->game->addRaidgroup("Gold","#E0BD49", "Team Gold", 0, 1, 0);
+			$this->game->addRaidgroup("Blue","#000093", "Team Blue", 0, 2, 0);
+			$this->game->addRaidgroup("Red","#930000", "Team Red", 0, 3, 0);
+			
+		}
+			public function uninstall(){
+			$this->game->removeLink("Fight-Arena");
+			//$this->pdh->put('calendars', 'delete_calendar_byaffiliation', array('swtor'));
+			//$this->pdh->put('calendars', 'delete_calendar', array(99)); 
+			//$this->db->query("DELETE FROM __calendars WHERE id=99");
+
+
 			}
-			return false;
+		protected function load_filters($langs){
+			if(!count($this->classes)) {
+				$this->load_type('classes', $langs);
+			}
+			foreach($langs as $lang) {
+				$names = $this->classes[$this->lang];
+				$this->filters[$lang] = array(
+					array('name' => '-----------', 'value' => false),
+					array('name' => $names[0], 'value' => 'class:0'),
+					array('name' => $names[1], 'value' => 'class:1'),
+					array('name' => $names[2], 'value' => 'class:2'),
+					array('name' => $names[3], 'value' => 'class:3'),
+					array('name' => $names[4], 'value' => 'class:4'),
+					array('name' => $names[5], 'value' => 'class:5'),
+					array('name' => $names[6], 'value' => 'class:6'),
+					array('name' => $names[7], 'value' => 'class:7'),
+					array('name' => $names[8], 'value' => 'class:8'),
+					array('name' => $names[9], 'value' => 'class:9'),
+					array('name' => $names[10], 'value' => 'class:10'),
+					array('name' => $names[11], 'value' => 'class:11'),
+					array('name' => $names[12], 'value' => 'class:12'),
+					array('name' => $names[13], 'value' => 'class:13'),
+					array('name' => $names[14], 'value' => 'class:14'),
+					array('name' => $names[15], 'value' => 'class:15'),
+					array('name' => $names[16], 'value' => 'class:16'),
+				);
+			}
 		}
 
-		protected function load_filters($langs) {}
-
 		public function profilefields() {
+			$this->load_type('professions', array($this->lang));
+			$this->load_type('realmlist', array($this->lang));
 			$fields = array(
+				'level'	=> array(
+					'type'			=> 'spinner',
+					'category'		=> 'character',
+					'lang'			=> 'uc_level',
+					'max'			=> 60,
+					'min'			=> 1,
+					'undeletable'	=> true,
+					'sort'			=> 1,
+				),
 				'gender'	=> array(
 					'type'			=> 'dropdown',
 					'category'		=> 'character',
@@ -115,7 +262,8 @@ if(!class_exists('swtor')) {
 					'options'		=> array('male' => 'uc_male', 'female' => 'uc_female'),
 					'undeletable'	=> true,
 					'visible'		=> true,
-					'tolang'		=> true
+					'tolang'		=> true,
+					'sort'			=> 3,
 				),
 				'guild'	=> array(
 					'type'			=> 'text',
@@ -123,14 +271,196 @@ if(!class_exists('swtor')) {
 					'lang'			=> 'uc_guild',
 					'size'			=> 32,
 					'undeletable'	=> true,
-					'visible'		=> true
-				)
+					'visible'		=> true,
+					'sort'			=> 4,
+				),
+				'servername'	=> array(
+					'type'			=> 'dropdown',
+					'category'		=> 'character',
+					'lang'			=> 'uc_servername',
+					'edecode'		=> true,
+					'options'		=> $this->realmlist[$this->lang],
+					'undeletable'	=> true,
+					'options_lang'	=> "realmlist",
+					'sort'			=> 2,
+				),
+				'prof1_name'	=> array(
+					'type'			=> 'dropdown',
+					'category'		=> 'profession',
+					'lang'			=> 'uc_prof1_name',
+					'options'		=> $this->professions[$this->lang],
+					'undeletable'	=> true,
+					'image'			=> "games/swtor/profiles/professions/{VALUE}.png",
+					'options_lang'	=> "professions",
+					'sort'			=> 5,
+				),
+				'prof1_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'profession',
+					'lang'			=> 'uc_prof1_value',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 6,
+				),
+				'prof2_name'	=> array(
+					'type'			=> 'dropdown',
+					'category'		=> 'profession',
+					'lang'			=> 'uc_prof2_name',
+					'options'		=> $this->professions[$this->lang],
+					'undeletable'	=> true,
+					'image'			=> "games/swtor/profiles/professions/{VALUE}.png",
+					'options_lang'	=> "professions",
+					'sort'			=> 7,
+				),
+				'prof2_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'profession',
+					'lang'			=> 'uc_prof2_value',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 8,
+				),
+				'prof3_name'	=> array(
+					'type'			=> 'dropdown',
+					'category'		=> 'profession',
+					'lang'			=> 'uc_prof3_name',
+					'options'		=> $this->professions[$this->lang],
+					'undeletable'	=> true,
+					'image'			=> "games/swtor/profiles/professions/{VALUE}.png",
+					'options_lang'	=> "professions",
+					'sort'			=> 9,
+				),
+				'prof3_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'profession',
+					'lang'			=> 'uc_prof3_value',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 10
+				),
+					'ruf1_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf1',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 11
+				),
+					'ruf2_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf2',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 12
+				),
+					'ruf3_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf3',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 13
+				),
+					'ruf4_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf4',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 14
+				),
+					'ruf5_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf5',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 15
+				),
+					'ruf6_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf6',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 16
+				),
+					'ruf7_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf7',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 17
+				),
+					'ruf8_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf8',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 18
+				),
+					'ruf9_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf9',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 19
+				),
+					'ruf10_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf10',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 20
+				),
+					'ruf11_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf11',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 21
+				),
+					'ruf12_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf12',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 22
+				),
+					'ruf13_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf13',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 23
+				),
+					'ruf14_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf14',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 24
+				),
+					'ruf15_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf15',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 25
+				),
+
 			);
 			return $fields;
-		}
-
-		public function install($install=false){
-			return array();
 		}
 
 		public function get_class_dependencies() {
