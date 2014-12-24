@@ -28,7 +28,7 @@ if(!class_exists('swtor')) {
 		protected static $apiLevel	= 20;
 		public $version				= '2.0.1';
 		protected $this_game		= 'swtor';
-		public $author				= "Anakyn";
+		public $author				= "Anakyn (Reapers T3-M4)";
 		protected $types			= array('classes', 'races', 'factions', 'roles', 'skills','filters', 'realmlist', 'professions');
 		protected $classes			= array();
 		protected $races			= array();
@@ -183,9 +183,6 @@ if(!class_exists('swtor')) {
 			$this->game->addMultiDKPPool("SWtoR 1.0", "SWtoR MultiDKPPool", $arrClassicEventIDs, array($intItempoolClassic));
 			$this->game->addMultiDKPPool("SWtoR 2.0", "SWtoR MultiDKPPool", $arrEventIDs, array($intItempoolGalactic));
 			$this->game->addMultiDKPPool("SWtoR 3.0", "SWtoR MultiDKPPool", $arrRevanEventIDs, array($intItempoolRevan));
-			
-			//Links
-			$this->game->addLink('Fight-Arena', 'http://www.fight-arena.de');
 
 			//Kalender
 			//$this->pdh->put('calendars', 'add_calendar', array(0, 'Raid 2', '#ffd700', 0, 1, 1, 'swtor'));
@@ -206,7 +203,6 @@ if(!class_exists('swtor')) {
 			
 		}
 			public function uninstall(){
-			$this->game->removeLink("Fight-Arena");
 			//$this->pdh->put('calendars', 'delete_calendar_byaffiliation', array('swtor'));
 			//$this->pdh->put('calendars', 'delete_calendar', array(99)); 
 			//$this->db->query("DELETE FROM __calendars WHERE id=99");
