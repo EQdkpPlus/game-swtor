@@ -28,7 +28,7 @@ if(!class_exists('swtor')) {
 		protected static $apiLevel	= 20;
 		public $version				= '2.0.1';
 		protected $this_game		= 'swtor';
-		public $author				= "Anakyn (Reapers T3-M4)";
+		public $author				= "Anykan (Reapers T3-M4)";
 		protected $types			= array('classes', 'races', 'factions', 'roles', 'skills','filters', 'realmlist', 'professions');
 		protected $classes			= array();
 		protected $races			= array();
@@ -87,22 +87,22 @@ if(!class_exists('swtor')) {
 				'parent'	=> array(
 					'class' => array(
 						0 	=> array(20),			// Unbekannt
-						1 	=> array(0,1,48),		// Frontkämpfer		neu
-						2 	=> array(2,3,4),		// Kommando			neu
-						3 	=> array(15,16,45),		// Schurke			neu
-						4 	=> array(17,18,19),		// Revolverheld		neu
-						5 	=> array(5,6,7),		// Gelehrter		neu
-						6 	=> array(8, 9, 43),		// Schatten			neu
-						7 	=> array(10,11,12),		// Wächter 			neu
-						8 	=> array(13,14,42),		// Hüter 			neu
-						9	=> array(23,24,25),		// Powertech		neu
-						10	=> array(21,22,47),		// Soeldner			neu
-						11	=> array(37,38,39),		// Saboteur			neu
-						12	=> array(35,36,46),		// Scharfschuetze	neu
-						13	=> array(30,31,32),		// Hexer			neu
-						14	=> array(33,34,44),		// Attentaeter		neu
-						15	=> array(26,27,28),		// Marodeur 		neu
-						16	=> array(29,40,41),		// Juggernaut		neu
+						1 	=> array(0,1,48),		// Frontkämpfer
+						2 	=> array(2,3,4),		// Kommando
+						3 	=> array(15,16,45),		// Schurke
+						4 	=> array(17,18,19),		// Revolverheld
+						5 	=> array(5,6,7),		// Gelehrter
+						6 	=> array(8, 9, 43),		// Schatten
+						7 	=> array(10,11,12),		// Wächter
+						8 	=> array(13,14,42),		// Hüter
+						9	=> array(23,24,25),		// Powertech
+						10	=> array(21,22,47),		// Soeldner
+						11	=> array(37,38,39),		// Saboteur
+						12	=> array(35,36,46),		// Scharfschuetze
+						13	=> array(30,31,32),		// Hexer
+						14	=> array(33,34,44),		// Attentaeter
+						15	=> array(26,27,28),		// Marodeur
+						16	=> array(29,40,41),		// Juggernaut
 					),
 				),
 			),
@@ -111,8 +111,8 @@ if(!class_exists('swtor')) {
 		public $default_roles = array( 
 			1 => array(2, 3, 5, 10, 13),
 			2 => array(1, 6, 8, 9, 14, 16),
-			3 => array(1, 2,3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
-			4 => array(1, 2,3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
+			3 => array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
+			4 => array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
 		);
 		protected $class_colors = array(
 			1	=> '#6ce31c',
@@ -184,10 +184,6 @@ if(!class_exists('swtor')) {
 			$this->game->addMultiDKPPool("SWtoR 2.0", "SWtoR MultiDKPPool", $arrEventIDs, array($intItempoolGalactic));
 			$this->game->addMultiDKPPool("SWtoR 3.0", "SWtoR MultiDKPPool", $arrRevanEventIDs, array($intItempoolRevan));
 
-			//Kalender
-			//$this->pdh->put('calendars', 'add_calendar', array(0, 'Raid 2', '#ffd700', 0, 1, 1, 'swtor'));
-			//$this->pdh->put('calendars', 'add_calendar', array(99, 'Raid 2', '#ffd700', 0, 1, 1));
-			//$this->db->query("INSERT INTO __calendars (id,name,color,private,feed,system, type, restricted) VALUES ('99','Raid 2','#ffd700','0',NULL,'0', '1', '0');");
 			
 			//Ranks
 			$this->game->addRank(0, "Guildmaster");
@@ -203,11 +199,6 @@ if(!class_exists('swtor')) {
 			
 		}
 			public function uninstall(){
-			//$this->pdh->put('calendars', 'delete_calendar_byaffiliation', array('swtor'));
-			//$this->pdh->put('calendars', 'delete_calendar', array(99)); 
-			//$this->db->query("DELETE FROM __calendars WHERE id=99");
-
-
 			}
 		protected function load_filters($langs){
 			if(!count($this->classes)) {

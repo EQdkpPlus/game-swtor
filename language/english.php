@@ -24,6 +24,7 @@ if ( !defined('EQDKP_INC') ){
 }
 $english_array =  array(
 	'factions' => array(
+			0		=> 'choose faction',
 		'republic'	=> 'Republic',
 		'imperial'	=> 'Empire'
 	),
