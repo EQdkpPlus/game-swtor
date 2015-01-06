@@ -24,7 +24,7 @@ if ( !defined('EQDKP_INC') ){
 }
 $german_array = array(
 	'factions' => array(
-			0		=> 'Wähle Fraktion',
+		'' => 'Wähle Fraktion', //use "" or "_select" as key for selection entries - nothing else!
 		'republic'	=> 'Republik',
 		'imperial'	=> 'Imperium'
 	),
