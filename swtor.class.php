@@ -22,7 +22,7 @@
 if ( !defined('EQDKP_INC') ){
 	header('HTTP/1.0 404 Not Found');exit;
 }
-    // test kommentar
+
 if(!class_exists('swtor')) {
 	class swtor extends game_generic {
 		protected static $apiLevel	= 20;
