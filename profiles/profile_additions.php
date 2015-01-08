@@ -28,7 +28,9 @@
 		.profession-name { padding-left: 4px; }
 		.profession-icon { margin-left: 4px; }
 		.profession-row { height: 40px !important; }
-
+		.swtor-faction-icon {}
+		.swtor-reputation-icon {}
+		
 		.sw-tab {
 			outline: none;
 			border-color: #E2D872;
