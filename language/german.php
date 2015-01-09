@@ -175,9 +175,9 @@ $german_array = array(
 		'ruf15'	=> 'Interplanetare Komponentenbörse',
 		'ruf16'	=> 'Stoßtrupp Oricon', 
 		'ruf17' => 'Republikanische Hyperraum-Armada', 
-		'ruf18'	=> 'Coalition Forces on Yavin 4', 		//deu name fehlt
-		'ruf19'	=> 'Freebooters Trade Union', 			//deu name fehlt
-		'ruf20'	=> 'People of Rishi', 					//deu name fehlt
+		'ruf18'	=> 'Koalitionstruppen auf Yavin 4',
+		'ruf19'	=> 'FFreibeuter-Gewerkschaft',
+		'ruf20'	=> 'Bewohner von Rishi',
 
 		//Admin Settings
 		'core_sett_fs_gamesettings'	=> 'SWToR Einstellungen',
