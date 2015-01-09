@@ -176,7 +176,7 @@ $german_array = array(
 		'ruf16'	=> 'Stoßtrupp Oricon', 
 		'ruf17' => 'Republikanische Hyperraum-Armada', 
 		'ruf18'	=> 'Koalitionstruppen auf Yavin 4',
-		'ruf19'	=> 'FFreibeuter-Gewerkschaft',
+		'ruf19'	=> 'Freibeuter-Gewerkschaft',
 		'ruf20'	=> 'Bewohner von Rishi',
 
 		//Admin Settings
