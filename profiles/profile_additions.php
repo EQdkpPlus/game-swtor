@@ -60,7 +60,7 @@
 			}
 
 		.sw-picture img {
-			max-width: 700px;
+			max-width: 800px;
 			}
 		.sw-wrapper {
 			width: 700px;
