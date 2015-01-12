@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<swtoritem>
+<itemid>2</itemid>
+<name>Zerlegte auferstandene Rüstung</name>
+<iconpath>brust</iconpath>
+<quality>5</quality>
+
+
+<tooltip><![CDATA[
+
+<table width="100%"> 
+	<tr> 
+		<td align="left" class="swtor_tooltiptitle swtor_q5" colspan="2">Zerlegte auferstandene Rüstung</td> </tr>
+	<tr> 
+		<td align="left" class="swtor_infolabel" colspan="2"> Wird beim Aufnehmen gebunden<td> </tr> 
+	<tr> 
+		<td> </br></td> </tr>  
+	<tr> 
+		<td align="left" class="swtor_infolabel2" colspan="2"> Beim Ausrüstungshändler im Versorgungsbereich der Flotte</td></tr> 
+	<tr>
+		<td align="left" class="swtor_infolabel2" colspan="2"> gegen einen ausrüstbaren Gegenstand eintauschbar</td></tr>
+</table>
+]]>
+</tooltip></swtoritem>
