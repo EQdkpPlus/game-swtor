@@ -12,7 +12,7 @@
 			<img class="swtor-faction-icon" src="{SW_FACTION}.png">
 			</td>
 			<td width="200">	
-				<table border="0" cellspacing="0" cellpadding="2" width="100%">
+				<table class="table fullwidth">
 					<tr>
 						<th colspan="2" align="center" >{DATA_FACTION}</div></th>
 					</tr>
@@ -28,7 +28,7 @@
 				</table>
 			</td>
 			<td width="400">
-				<table border="0" width="100%" cellspacing="0" cellpadding="2" >
+				<table class="table fullwidth">
 					<tr>
 						<th colspan="2" align="center" >{GL_uc_prof_professions}</th>
 					</tr>
@@ -50,11 +50,10 @@
 	
 <div class="tableHeader">
 	<h2>{L_DKP_NAME}</h2>
-		</div>
-
-<input type="checkbox" onchange="window.location='{SID}&with_twinks='+ ((this.checked) ? 0 : 1)" name="with_twinks" value="1" <!-- IF not S_WITH_TWINKS -->checked="checked"<!-- ENDIF -->/> {L_points_for_this_char}
+</div>
+<input type="checkbox" onchange="window.location='{SID}&with_twinks='+ ((this.checked) ? 0 : 1)" name="with_twinks" value="1" <!-- IF not S_WITH_TWINK_DKP -->checked="checked"<!-- ENDIF -->/> {L_points_for_this_char}
 <br /><br />
-<table width="100%" border="0" cellspacing="1" cellpadding="2" class="hptt colorswitch scrollable-x borderless">
+<table class="table fullwidth hptt colorswitch scrollable-x borderless">
 	{MEMBER_POINTS}
 </table>
 <br />
@@ -67,7 +66,6 @@
 		<li><a href='#fragment-2-3'><span>{L_tab_adjustments}</span></a></li>
 		<!-- ENDIF -->
 		<li><a href='#fragment-2-4'><span>{L_tab_attendance}</span></a></li>
-		<li><a href='#fragment-2-5'><span>{GL_tab_reputation}</span></a></li>
 	</ul>
 
 	<!-- ALL PROFILE FIELDS TABLE -->
@@ -89,7 +87,7 @@
 		<div class="tableHeader">
 			<h2>{L_raid_attendance_history}</h2>
 		</div>
-		<table width="100%" border="0" cellspacing="1" cellpadding="2" class="hptt colorswitch scrollable-x">
+		<table class="table fullwidth hptt colorswitch scrollable-x">
 		{RAID_OUT}
 		</table>
 		<div class="center pagination_wrapper">
@@ -102,7 +100,7 @@
 		<div class="tableHeader">
 			<h2>{L_item_purchase_history}</h2>
 		</div>
-		<table width="100%" border="0" cellspacing="1" cellpadding="2" class="hptt colorswitch scrollable-x">
+		<table class="table fullwidth hptt colorswitch scrollable-x">
 		{ITEM_OUT}
 		</table>
 		<div class="center pagination_wrapper">
@@ -116,7 +114,7 @@
 		<div class="tableHeader">
 			<h2>{L_individual_adjustment_history}</h2>
 		</div>
-		<table width="100%" border="0" cellspacing="1" cellpadding="2" class="hptt colorswitch scrollable-x">
+		<table class="table fullwidth hptt colorswitch scrollable-x">
 		{ADJUSTMENT_OUT}
 		</table>
 		<div class="center pagination_wrapper">
@@ -127,7 +125,7 @@
 
 	<!-- ATTENDANCE -->
 	<div id="fragment-2-4">
-		<table width="100%" border="0" cellspacing="1" cellpadding="2" class="hptt colorswitch scrollable-x">
+		<table class="table fullwidth hptt colorswitch scrollable-x">
 		{EVENT_ATT_OUT}
 		</table>
 	</div>
