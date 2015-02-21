@@ -29,7 +29,7 @@ $english_array =  array(
 		'imperial'	=> 'Empire'
 	),
 	'classes' => array(
-		0	=> 'choose race',
+		0	=> 'choose class',
 
 		#republic
 		1	=> 'Vanguard',
@@ -52,7 +52,7 @@ $english_array =  array(
 		16	=> 'Juggernaut',
 	),
 	'races' => array(
-		0	=> 'Unknown',
+		0	=> 'choose race',
 		1	=> 'Human',
 		2	=> 'Rattataki',
 		3	=> 'Twi\'lek',
@@ -231,11 +231,11 @@ $english_array =  array(
 		'hc_tbh'							=> 'Golden Fury (Hard)',
 		'nm_tbh'							=> 'Golden Fury (Nightmare)',
 		'sm_wueter'							=> 'The Ravagers (Story)',
-		'hc_wueter'							=> 'The Ravagers (Schwer)',
-		'nm_wueter'							=> 'The Ravagers (Alptraum)',
+		'hc_wueter'							=> 'The Ravagers (Hard)',
+		'nm_wueter'							=> 'The Ravagers (Nightmare)',
 		'sm_tempel'							=> 'Tempel of Sacrifice (Story)',
-		'hc_tempel'							=> 'Tempel of Sacrifice (Schwer)',
-		'nm_tempel'							=> 'Tempel of Sacrifice(Alptraum)',
+		'hc_tempel'							=> 'Tempel of Sacrifice (Hard)',
+		'nm_tempel'							=> 'Tempel of Sacrifice (Nightmare)',
 
 		//realms
 	),
