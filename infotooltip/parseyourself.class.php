@@ -1,22 +1,23 @@
 <?php
- /*
- * Project:		EQdkp-Plus
- * License:		Creative Commons - Attribution-Noncommercial-Share Alike 3.0 Unported
- * Link:		http://creativecommons.org/licenses/by-nc-sa/3.0/
- * -----------------------------------------------------------------------
- * Began:		2010
- * Date:		$Date: 2014-09-27 18:15:30 +0200 (Sat, 27 Sep 2014) $
- * -----------------------------------------------------------------------
- * @author		$Author: wallenium $
- * @copyright	2006-2011 EQdkp-Plus Developer Team
- * @link		http://eqdkp-plus.com
- * @package		eqdkp-plus
- * @version		$Rev: 14621 $
- * 
- * $Id: parseyourself.class.php 14621 2014-09-27 16:15:30Z wallenium $
+/*	Project:	EQdkp-Plus
+ *	Package:	Star Wars - the old republic game package
+ *	Link:		http://eqdkp-plus.eu
+ *
+ *	Copyright (C) 2006-2015 EQdkp-Plus Developer Team
+ *
+ *	This program is free software: you can redistribute it and/or modify
+ *	it under the terms of the GNU Affero General Public License as published
+ *	by the Free Software Foundation, either version 3 of the License, or
+ *	(at your option) any later version.
+ *
+ *	This program is distributed in the hope that it will be useful,
+ *	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *	GNU Affero General Public License for more details.
+ *
+ *	You should have received a copy of the GNU Affero General Public License
+ *	along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-include_once('itt_parser.aclass.php');
 
 if(!class_exists('parseyourself')) {
 	class parseyourself extends itt_parser {
@@ -29,7 +30,6 @@ if(!class_exists('parseyourself')) {
 		public $settings = array();
 
 		public $itemlist = array();
-		public $recipelist = array();
 
 		private $searched_langs = array();
 
@@ -43,29 +43,35 @@ if(!class_exists('parseyourself')) {
 
 		public function __destruct(){
 			unset($this->itemlist);
-			unset($this->recipelist);
 			unset($this->searched_langs);
 			parent::__construct($init, $config, $root_path, $cache, $puf, $pdl);
 			$this->av_langs = ((isset($g_lang[$this->mygame])) ? $g_lang[$this->mygame] : '');
 		}
 
 		private function getItemlist($lang, $forceupdate=false, $type='item'){
-			$this->{$type.'list'} = unserialize(file_get_contents($this->pfh->FilePath($this->mygame.'_'.$lang.'_'.$type.'list.itt', 'itt_cache')));
-			switch($lang){
-				case 'de': $lang='de_DE';break;
-				default: $lang='de_DE';
-			}
-			if(!$this->itemlist OR $forceupdate){
-				$urlitemlist	= $this->getDataFolder().$type.'s/'.$lang.'/'.$type.'list.xml';
-				$xml			= simplexml_load_file($urlitemlist);
-
-				foreach($xml->children() as $item) {
-					$name = (string) $item['name'];
-					$this->{$type.'list'}[(int)$item['id']][$lang] = $name;
+			$origlang = $lang;
+			if(is_file($this->pfh->FilePath($this->mygame.'_'.$lang.'_'.$type.'list.itt', 'itt_cache'))){
+				$this->{$type.'list'} = unserialize(file_get_contents($this->pfh->FilePath($this->mygame.'_'.$origlang.'_'.$type.'list.itt', 'itt_cache')));
+				
+				switch($lang){
+					case 'de': $lang='de_DE';break;
+					default: $lang='de_DE';
 				}
-				$this->pfh->putContent($this->pfh->FilePath($this->mygame.'_'.$lang.'_'.$type.'list.itt', 'itt_cache'), serialize($this->{$type.'list'}));
+				
+				if(!$this->{$type.'list'} OR $forceupdate){
+					$urlitemlist	= $this->getDataFolder().$type.'s/'.$lang.'/'.$type.'list.xml';
+					$xml			= simplexml_load_file($urlitemlist);
+
+					foreach($xml->children() as $item) {
+						$name = (string) $item['name'];
+						$this->{$type.'list'}[(int)$item['id']][$lang] = $name;
+					}
+					$this->pfh->putContent($this->pfh->FilePath($this->mygame.'_'.$origlang.'_'.$type.'list.itt', 'itt_cache'), serialize($this->{$type.'list'}));
+				}
+				return true;
 			}
-			return true;
+			
+			return false;
 		}
 
 		private function getItemIDfromItemlist($itemname, $lang, $forceupdate=false, $searchagain=0, $type='item'){
@@ -112,6 +118,7 @@ if(!class_exists('parseyourself')) {
 		}
 
 		protected function getItemData($item_id, $lang, $itemname='', $type='item'){
+			$origlang = $lang;
 			settype($item_id, 'int');
 			$item			= array('id' => $item_id);
 			if(!$item_id) return null;
@@ -145,7 +152,7 @@ if(!class_exists('parseyourself')) {
 					
 				);
 				$item['html']		= str_replace('{ITEM_HTML}', stripslashes($html), $template_html);
-				$item['lang']		= $lang;
+				$item['lang']		= $origlang;
 				$item['icon']		= (string)$itemxml->iconpath;
 				$item['color']		= 'swtor_q'.(string)$itemxml->quality;
 
