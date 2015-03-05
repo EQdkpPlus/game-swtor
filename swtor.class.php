@@ -26,7 +26,7 @@ if ( !defined('EQDKP_INC') ){
 if(!class_exists('swtor')) {
 	class swtor extends game_generic {
 		protected static $apiLevel	= 20;
-		public $version				= '2.0.3';
+		public $version				= '2.0.4';
 		protected $this_game		= 'swtor';
 		public $author				= "Anykan (Reapers T3-M4)";
 		protected $types			= array('classes', 'races', 'factions', 'roles', 'skills','filters', 'realmlist', 'professions');
