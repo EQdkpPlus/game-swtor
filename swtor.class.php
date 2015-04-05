@@ -26,7 +26,7 @@ if ( !defined('EQDKP_INC') ){
 if(!class_exists('swtor')) {
 	class swtor extends game_generic {
 		protected static $apiLevel	= 20;
-		public $version				= '2.0.4';
+		public $version				= '2.0.5';
 		protected $this_game		= 'swtor';
 		public $author				= "Anykan (Reapers T3-M4)";
 		protected $types			= array('classes', 'races', 'factions', 'roles', 'skills','filters', 'realmlist', 'professions');
@@ -444,6 +444,46 @@ if(!class_exists('swtor')) {
 					'size'			=> 4,
 					'undeletable'	=> true,
 					'sort'			=> 25
+				),
+					'ruf16_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf16',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 26
+				),
+					'ruf17_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf17',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 27
+				),
+					'ruf18_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf18',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 28
+				),
+					'ruf19_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf19',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 29
+				),
+					'ruf20_value'	=> array(
+					'type'			=> 'int',
+					'category'		=> 'reputation',
+					'lang'			=> 'ruf20',
+					'size'			=> 4,
+					'undeletable'	=> true,
+					'sort'			=> 30
 				),
 
 			);
