@@ -29,7 +29,7 @@ $german_array = array(
 		'imperial'	=> 'Imperium'
 	),
 	'classes' => array(
-		0	=> 'Wähle Rasse',
+		0	=> 'Wähle Klasse',
 
 		#republic
 		1	=> 'Frontkämpfer',
@@ -52,7 +52,7 @@ $german_array = array(
 		16	=> 'Juggernaut',
 	),
 	'races' => array(
-		0	=> 'Unbekannt',
+		0	=> 'Wähle Rasse',
 		1	=> 'Mensch',
 		2	=> 'Rattataki',
 		3	=> 'Twi\'lek',
