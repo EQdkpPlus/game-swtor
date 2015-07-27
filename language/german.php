@@ -63,6 +63,7 @@ $german_array = array(
 		8	=> 'Zabrak',
 		9	=> 'Cyborg',
 		10	=> 'Cathar',
+		11	=> 'Togruta',
 	),
 	'skills'=> array(
 		0 	=> 'Schildspezialist', 	//Frontkaempfer
