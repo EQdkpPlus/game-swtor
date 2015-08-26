@@ -519,6 +519,15 @@ if(!class_exists('swtor')) {
 				)
 			);
 		}
+		
+		public function decorate_classes($class_id, $profile=array(), $size=16, $pathonly=false) {
+			$big = ($size > 20) ? '_b' : '';
+			if(is_file($this->root_path.'games/'.$this->this_game.'/icons/classes/'.$class_id.$big.'.png')){
+				$icon_path = $this->server_path.'games/'.$this->this_game.'/icons/classes/'.$class_id.$big.'.png';
+				return ($pathonly) ? $icon_path : '<img src="'.$icon_path.'" height="'.$size.'" alt="class '.$class_id.'" class="'.$this->this_game.'_classicon classicon'.'" title="'.$this->game->get_name('classes', $class_id).'" />';
+			}
+			return false;
+		}
 	}
 }
 ?>
