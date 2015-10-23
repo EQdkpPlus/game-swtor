@@ -237,6 +237,9 @@ $english_array =  array(
 		'sm_tempel'							=> 'Tempel of Sacrifice (Story)',
 		'hc_tempel'							=> 'Tempel of Sacrifice (Hard)',
 		'nm_tempel'							=> 'Tempel of Sacrifice (Nightmare)',
+		'sm_mono'							=> 'Colossal Monolith (Story)',
+		'hc_mono'							=> 'Colossal Monolith (Schwer)',
+		'nm_mono'							=> 'Colossal Monolith (Alptraum)',
 
 		//realms
 	),
