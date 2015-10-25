@@ -235,6 +235,9 @@ $german_array = array(
 		'sm_tempel'							=> 'Tempel des Opfers (Story)',
 		'hc_tempel'							=> 'Tempel des Opfers (Schwer)',
 		'nm_tempel'							=> 'Tempel des Opfers (Alptraum)',
+		'sm_mono'							=> 'Gewaltiger Monolith (Story)',
+		'hc_mono'							=> 'Gewaltiger Monolith (Schwer)',
+		'nm_mono'							=> 'Gewaltiger Monolith (Alptraum)',
 
 		//realms
 	),

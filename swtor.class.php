@@ -26,7 +26,7 @@ if ( !defined('EQDKP_INC') ){
 if(!class_exists('swtor')) {
 	class swtor extends game_generic {
 		protected static $apiLevel	= 20;
-		public $version				= '2.0.6';
+		public $version				= '2.4.0';
 		protected $this_game		= 'swtor';
 		public $author				= "Anykan (Reapers T3-M4)";
 		protected $types			= array('classes', 'races', 'factions', 'roles', 'skills','filters', 'realmlist', 'professions');
@@ -174,16 +174,23 @@ if(!class_exists('swtor')) {
 			$arrRevanEventIDs[] = $this->game->addEvent($this->glang('hc_tempel'), 0, "h.png");
 			$arrRevanEventIDs[] = $this->game->addEvent($this->glang('nm_tempel'), 0, "n.png");
 			
+			//Operation Swtor 3.0
+			$arrFallenEventIDs = array();
+			$arrFallenEventIDs[] = $this->game->addEvent($this->glang('sm_mono'), 0, "s.png");
+			$arrFallenEventIDs[] = $this->game->addEvent($this->glang('hc_mono'), 0, "h.png");
+			$arrFallenEventIDs[] = $this->game->addEvent($this->glang('nm_mono'), 0, "n.png");
+			
 			//itempools
 			$intItempoolClassic = $this->game->addItempool("SWtoR 1.0", "SWtoR 1.0 Itempool");
 			$intItempoolGalactic = $this->game->addItempool("SWtoR 2.0", "SWtoR 2.0 Itempool");
 			$intItempoolRevan = $this->game->addItempool("SWtoR 3.0", "SWtoR 3.0 Itempool");
+			$intItempoolFallen = $this->game->addItempool("SWtoR 4.0", "SWtoR 4.0 Itempool");
 
 			
 			$this->game->addMultiDKPPool("SWtoR 1.0", "SWtoR MultiDKPPool", $arrClassicEventIDs, array($intItempoolClassic));
 			$this->game->addMultiDKPPool("SWtoR 2.0", "SWtoR MultiDKPPool", $arrEventIDs, array($intItempoolGalactic));
 			$this->game->addMultiDKPPool("SWtoR 3.0", "SWtoR MultiDKPPool", $arrRevanEventIDs, array($intItempoolRevan));
-
+			$this->game->addMultiDKPPool("SWtoR 4.0", "SWtoR MultiDKPPool", $arrFallenEventIDs, array($intItempoolFallen));
 			
 			//Ranks
 			$this->game->addRank(0, "Guildmaster");
@@ -237,7 +244,7 @@ if(!class_exists('swtor')) {
 					'type'			=> 'spinner',
 					'category'		=> 'character',
 					'lang'			=> 'uc_level',
-					'max'			=> 60,
+					'max'			=> 65,
 					'min'			=> 1,
 					'undeletable'	=> true,
 					'sort'			=> 1,
