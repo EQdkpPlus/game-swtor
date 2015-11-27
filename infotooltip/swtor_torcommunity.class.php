@@ -108,10 +108,12 @@ if(!class_exists('swtor_torcommunity')) {
 			$url = 'https://torcommunity.com/db/tooltips/html/'.$item_id.'.torctip';
 			$this->pdl->log('infotooltip', 'fetch item-data from '.$url);
 			$content = $this->puf->fetch($url);
-			
 			preg_match("/(.*)<div class=\"torctip_image (.*)\"><img src=\"(.*)icons\/(.*)\./U", $content, $output_array);
 			
-			preg_match("/(.*)<div class=\"torctip_name\"><a(.*)>(.*)<\//U", $content, $output_array2);
+			$intMatches = preg_match("/(.*)<div class=\"torctip_name\"><a(.*)>(.*)<\//U", $content, $output_array2);
+			if($intMatches === 0){
+				preg_match("/(.*)<span class=\"(torctip_artifact|torctip_cheap|torctip_legacy|torctip_legendary|torctip_mission|torctip_moddable|torctip_premium|torctip_prototype|torctip_standard)\">(.*)<\//U", $content, $output_array2);
+			}
 			
 			$template_html = trim(file_get_contents($this->root_path.'games/swtor/infotooltip/templates/swtor_torcommunity_popup.tpl'));
 			$item['html'] = str_replace('{ITEM_HTML}', stripslashes($content), $template_html);
