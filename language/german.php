@@ -115,8 +115,8 @@ $german_array = array(
 		46	=> 'Giftigkeit',		//Scharfschuetze
 		47	=> 'Innovative Bewaffnung', //Söldner
 		48 	=> 'Plasmatech', 		//Frontkaempfer
-		
-		
+
+
 	),
 	'roles' => array(
 		1	=> 'Heiler',
@@ -174,11 +174,15 @@ $german_array = array(
 		'ruf13'	=> 'Waffensicherheitskorps',
 		'ruf14'	=> '1. imperiale Flotte',
 		'ruf15'	=> 'Interplanetare Komponentenbörse',
-		'ruf16'	=> 'Stoßtrupp Oricon', 
-		'ruf17' => 'Republikanische Hyperraum-Armada', 
+		'ruf16'	=> 'Stoßtrupp Oricon',
+		'ruf17' => 'Republikanische Hyperraum-Armada',
 		'ruf18'	=> 'Koalitionstruppen auf Yavin 4',
 		'ruf19'	=> 'Freibeuter-Gewerkschaft',
 		'ruf20'	=> 'Bewohner von Rishi',
+
+		// guildbank_money
+		'gb_currency_credits'		=> 'Credits',
+		'gb_currency_credits_s'		=> 'C',
 
 		//Admin Settings
 		'core_sett_fs_gamesettings'	=> 'SWToR Einstellungen',
@@ -203,7 +207,7 @@ $german_array = array(
 		'uc_prof3_name'				=> 'Sekundärberuf',
 		'uc_prof_professions'		=> 'Berufe',
 		'uc_level'					=> 'Stufe',
-		
+
 		//Operation
 		'sm_ewigekammer'					=> 'Ewige Kammer (Story)',
 		'hc_ewigekammer'					=> 'Ewige Kammer (Schwer)',

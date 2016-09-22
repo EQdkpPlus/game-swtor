@@ -115,8 +115,6 @@ $english_array =  array(
 		46	=> 'Virulence',			//Scharfschuetze
 		47	=> 'Innovative Ordnance', //Söldner
 		48 	=> 'Plasmatech', 		//Frontkaempfer
-		
-		
 	),
 
 	'roles' => array(
@@ -180,7 +178,11 @@ $english_array =  array(
 		'ruf18'	=> 'Coalition Forces on Yavin 4',
 		'ruf19'	=> 'Freebooters Trade Union',
 		'ruf20'	=> 'People of Rishi',
-		
+
+		// guildbank_money
+		'gb_currency_credits'		=> 'Credits',
+		'gb_currency_credits_s'		=> 'C',
+
 		//Admin Settings
 		'core_sett_fs_gamesettings'	=> 'SWToR Settings',
 		'uc_one_faction'			=> 'Restrict the class selection to a specific faction?',
@@ -204,9 +206,9 @@ $english_array =  array(
 		'uc_prof3_name'				=> 'Secondary occupation',
 		'uc_prof_professions'		=> 'Profession',
 		'uc_level'					=> 'Level',
-		
+
 		//Operation
-		
+
 		'sm_ewigekammer'					=> 'The Eternity Vault (Story)',
 		'hc_ewigekammer'					=> 'The Eternity Vault (Hard)',
 		'nm_ewigekammer'					=> 'The Eternity Vault (Nightmare)',

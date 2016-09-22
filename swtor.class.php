@@ -73,8 +73,8 @@ if(!class_exists('swtor')) {
 				'recruitment' => true,
 				'parent'	=> array(
 					'faction' => array(
-						'republic' 	=> array(0,1,2,3,4,5,6,7,8),	// 
-						'imperial' 	=> array(0,9,10,11,12,13,14,15,16),	// 
+						'republic' 	=> array(0,1,2,3,4,5,6,7,8),	//
+						'imperial' 	=> array(0,9,10,11,12,13,14,15,16),	//
 					),
 				),
 			),
@@ -108,7 +108,7 @@ if(!class_exists('swtor')) {
 			),
 		);
 
-		public $default_roles = array( 
+		public $default_roles = array(
 			1 => array(2, 3, 5, 10, 11, 13),
 			2 => array(1, 6, 8, 9, 14, 16),
 			3 => array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
@@ -164,7 +164,7 @@ if(!class_exists('swtor')) {
 			$arrEventIDs[] = $this->game->addEvent($this->glang('sm_tbh'), 0, "s.png");
 			$arrEventIDs[] = $this->game->addEvent($this->glang('hc_tbh'), 0, "h.png");
 			$arrEventIDs[] = $this->game->addEvent($this->glang('nm_tbh'), 0, "n.png");
-			
+
 			//Operation Swtor 3.0
 			$arrRevanEventIDs = array();
 			$arrRevanEventIDs[] = $this->game->addEvent($this->glang('sm_wueter'), 0, "s.png");
@@ -173,37 +173,37 @@ if(!class_exists('swtor')) {
 			$arrRevanEventIDs[] = $this->game->addEvent($this->glang('sm_tempel'), 0, "s.png");
 			$arrRevanEventIDs[] = $this->game->addEvent($this->glang('hc_tempel'), 0, "h.png");
 			$arrRevanEventIDs[] = $this->game->addEvent($this->glang('nm_tempel'), 0, "n.png");
-			
+
 			//Operation Swtor 3.0
 			$arrFallenEventIDs = array();
 			$arrFallenEventIDs[] = $this->game->addEvent($this->glang('sm_mono'), 0, "s.png");
 			$arrFallenEventIDs[] = $this->game->addEvent($this->glang('hc_mono'), 0, "h.png");
 			$arrFallenEventIDs[] = $this->game->addEvent($this->glang('nm_mono'), 0, "n.png");
-			
+
 			//itempools
 			$intItempoolClassic = $this->game->addItempool("SWtoR 1.0", "SWtoR 1.0 Itempool");
 			$intItempoolGalactic = $this->game->addItempool("SWtoR 2.0", "SWtoR 2.0 Itempool");
 			$intItempoolRevan = $this->game->addItempool("SWtoR 3.0", "SWtoR 3.0 Itempool");
 			$intItempoolFallen = $this->game->addItempool("SWtoR 4.0", "SWtoR 4.0 Itempool");
 
-			
+
 			$this->game->addMultiDKPPool("SWtoR 1.0", "SWtoR MultiDKPPool", $arrClassicEventIDs, array($intItempoolClassic));
 			$this->game->addMultiDKPPool("SWtoR 2.0", "SWtoR MultiDKPPool", $arrEventIDs, array($intItempoolGalactic));
 			$this->game->addMultiDKPPool("SWtoR 3.0", "SWtoR MultiDKPPool", $arrRevanEventIDs, array($intItempoolRevan));
 			$this->game->addMultiDKPPool("SWtoR 4.0", "SWtoR MultiDKPPool", $arrFallenEventIDs, array($intItempoolFallen));
-			
+
 			//Ranks
 			$this->game->addRank(0, "Guildmaster");
 			$this->game->addRank(1, "Officer");
 			$this->game->addRank(2, "Veteran");
 			$this->game->addRank(3, "Member");
 			$this->game->addRank(4, "Initiate", true);
-			
+
 			//Raidgroups
 			$this->game->addRaidgroup("Gold","#E0BD49", "Team Gold", 0, 1, 0);
 			$this->game->addRaidgroup("Blue","#000093", "Team Blue", 0, 2, 0);
 			$this->game->addRaidgroup("Red","#930000", "Team Red", 0, 3, 0);
-			
+
 		}
 			public function uninstall(){
 			}
@@ -509,7 +509,7 @@ if(!class_exists('swtor')) {
 				}
 			} else {
 				// set type of faction-field back to dropdown
-				if($pf_faction['type'] != 'dropdown') {	
+				if($pf_faction['type'] != 'dropdown') {
 					$this->db->query("UPDATE __member_profilefields SET type = 'dropdown' WHERE name='faction';");
 					$this->pdh->enqueue_hook('game_update');
 					$this->pdh->process_hook_queue();
@@ -526,7 +526,7 @@ if(!class_exists('swtor')) {
 				)
 			);
 		}
-		
+
 		public function decorate_classes($class_id, $profile=array(), $size=16, $pathonly=false) {
 			$big = ($size > 20) ? '_b' : '';
 			if(is_file($this->root_path.'games/'.$this->this_game.'/icons/classes/'.$class_id.$big.'.png')){
@@ -534,6 +534,22 @@ if(!class_exists('swtor')) {
 				return ($pathonly) ? $icon_path : '<img src="'.$icon_path.'" height="'.$size.'" alt="class '.$class_id.'" class="'.$this->this_game.'_classicon classicon'.'" title="'.$this->game->get_name('classes', $class_id).'" />';
 			}
 			return false;
+		}
+
+		/* Guildbank */
+		public function guildbank_money(){
+			return array(
+				'Credits'		=> array(
+					'icon'			=> array(
+						'type'		=> 'svg',
+						'name'		=> 'credits.svg',
+					),
+					'factor'		=> 1,
+					'size'			=> 'unlimited',
+					'language'		=> $this->game->glang('gb_currency_credits'),
+					'short_lang'	=> $this->game->glang('gb_currency_credits_s'),
+				)
+			);
 		}
 	}
 }
