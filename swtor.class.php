@@ -541,7 +541,7 @@ if(!class_exists('swtor')) {
 			return array(
 				'Credits'		=> array(
 					'icon'			=> array(
-						'type'		=> 'svg',
+						'type'		=> 'image',
 						'name'		=> 'credits.svg',
 					),
 					'factor'		=> 1,
