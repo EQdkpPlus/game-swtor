@@ -145,7 +145,7 @@ if(!class_exists('parseyourself')) {
 				
 				//build itemhtml
 				$html				= str_replace('"', "'", (string)$itemxml->tooltip);
-				$template_html		= trim(file_get_contents($this->root_path.'games/swtor/infotooltip/templates/swtor_self_popup.tpl'));
+				$template_html		= trim(file_get_contents($this->root_path.'games/swtor/infotooltip/templates/swtor_popup.tpl'));
 				$item['params']		= array(
 					'path'	=> $this->getDataFolder(true).'items/images/',
 					'ext'	=> '.jpg',
