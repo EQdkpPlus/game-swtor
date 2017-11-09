@@ -26,7 +26,7 @@ if ( !defined('EQDKP_INC') ){
 if(!class_exists('swtor')) {
 	class swtor extends game_generic {
 		protected static $apiLevel	= 20;
-		public $version				= '2.4.3';
+		public $version				= '2.4.4';
 		protected $this_game		= 'swtor';
 		public $author				= "Anykan (Reapers T3-M4)";
 		protected $types			= array('classes', 'races', 'factions', 'roles', 'skills','filters', 'realmlist', 'professions');
@@ -523,6 +523,12 @@ if(!class_exists('swtor')) {
 				'uc_one_faction' => array(
 					'type'	=> 'radio',
 					'lang'	=> 'uc_one_faction',
+				),
+				'rs_realm'	=> array(
+					'lang'			=> 'servername',
+					'type'			=> 'text',
+					'size'			=> '21',
+					'autocomplete'	=> $this->game->get('realmlist')
 				)
 			);
 		}

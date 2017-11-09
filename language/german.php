@@ -186,6 +186,7 @@ $german_array = array(
 
 		//Admin Settings
 		'core_sett_fs_gamesettings'	=> 'SWToR Einstellungen',
+		'servername'				=> 'Servername',
 		'uc_one_faction'			=> 'Klassenauswahl auf bestimmte Fraktion einschränken?',
 		'uc_faction'				=> 'Fraktion',
 		'uc_faction_help'			=> 'Die Klassen der gegnerischen Fraktion können nicht mehr ausgewählt werden.',
@@ -245,23 +246,12 @@ $german_array = array(
 
 		//realms
 	),
-		'realmlist' => array(
-		'T3-M4','Darth Nihilus',
-		'Tomb of Freedon Nadd',
-		'Jar\'Kai Sword',
-		'The Progenitor',
-		'Vanjervalis Chain',
-		'Battle Meditation',
-		'Mantle of the Force',
-		'The Red Eclipse',
-		'The Bastion',
-		'Begeren Colony',
-		'The Harbinger',
-		'The Shadowlands',
-		'Jung Ma',
-		'The Ebon Hawk',
-		'Prophecy of the Five',
-		'Jedi Covenant'),
+	'realmlist' => array(
+		'Star Forge',
+		'Satele Shan',
+		'Tulak Hord',
+		'Darth Malgus',
+		'The Leviathan')
 );
 
 ?>
