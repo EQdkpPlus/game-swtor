@@ -119,17 +119,17 @@
 			0	=> array(
 				'icon'			=> $this->server_path."games/swtor/profiles/professions/".(($member['prof1_name']) ? $member['prof1_name'] : '0').".png",
 				'name'			=> $a_lang_profession[$member['prof1_name']],
-				'progressbar'	=> $this->jquery->progressbar('profession1', 0, array('completed' => $member['prof1_value'], 'total' => 550, 'text' => '%progress%'))
+				'progressbar'	=> $this->jquery->progressbar('profession1', 0, array('completed' => $member['prof1_value'], 'total' => 600, 'text' => '%progress%'))
 			),
 			1	=> array(
 				'icon'			=> $this->server_path."games/swtor/profiles/professions/".(($member['prof2_name']) ? $member['prof2_name'] : '0').".png",
 				'name'			=> $a_lang_profession[$member['prof2_name']],
-				'progressbar'	=> $this->jquery->progressbar('profession2', 0, array('completed' => $member['prof2_value'], 'total' => 550, 'text' => '%progress%'))
+				'progressbar'	=> $this->jquery->progressbar('profession2', 0, array('completed' => $member['prof2_value'], 'total' => 600, 'text' => '%progress%'))
 			),
 			2	=> array(
 				'icon'			=> $this->server_path."games/swtor/profiles/professions/".(($member['prof3_name']) ? $member['prof3_name'] : '0').".png",
 				'name'			=> $a_lang_profession[$member['prof3_name']],
-				'progressbar'	=> $this->jquery->progressbar('profession3', 0, array('completed' => $member['prof3_value'], 'total' => 550, 'text' => '%progress%'))
+				'progressbar'	=> $this->jquery->progressbar('profession3', 0, array('completed' => $member['prof3_value'], 'total' => 600, 'text' => '%progress%'))
 			)
 		);
 				foreach ($a_professions as $v_professions){
