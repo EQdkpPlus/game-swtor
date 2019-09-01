@@ -57,8 +57,8 @@ if(!class_exists('swtor')) {
 				'decorate'	=> true,
 				'parent'	=> array(
 					'faction' => array(
-						'republic'	=> array(0,1,2,3,4,5,6,7,8,9,10,11),
-						'imperial'	=> array(0,1,2,3,4,5,6,7,8,9,10,11),
+						'republic'	=> array(0,1,2,3,4,5,6,7,8,9,10,11,12),
+						'imperial'	=> array(0,1,2,3,4,5,6,7,8,9,10,11,12),
 					),
 				),
 			),
@@ -174,23 +174,40 @@ if(!class_exists('swtor')) {
 			$arrRevanEventIDs[] = $this->game->addEvent($this->glang('hc_tempel'), 0, "h.png");
 			$arrRevanEventIDs[] = $this->game->addEvent($this->glang('nm_tempel'), 0, "n.png");
 
-			//Operation Swtor 3.0
+			//Operation Swtor 3.0 Fallen
 			$arrFallenEventIDs = array();
 			$arrFallenEventIDs[] = $this->game->addEvent($this->glang('sm_mono'), 0, "s.png");
 			$arrFallenEventIDs[] = $this->game->addEvent($this->glang('hc_mono'), 0, "h.png");
 			$arrFallenEventIDs[] = $this->game->addEvent($this->glang('nm_mono'), 0, "n.png");
+			$arrFallenEventIDs[] = $this->game->addEvent($this->glang('sm_gods'), 0, "s.png");
+			$arrFallenEventIDs[] = $this->game->addEvent($this->glang('hc_gods'), 0, "n.png");
+
+			//Operation Swtor 5.6 Uprising
+			$arrUprisingEventIDs = array();
+			$arrUprisingEventIDs[] = $this->game->addEvent($this->glang('sm_queen'), 0, "s.png");
+			$arrUprisingEventIDs[] = $this->game->addEvent($this->glang('hc_queen'), 0, "h.png");
+
+			//Operation Swtor 6.0 Onslaught
+			$arrOnslaughtEventIDs = array();
+			$arrOnslaughtEventIDs[] = $this->game->addEvent($this->glang('sm_dxun'), 0, "s.png");
+			$arrOnslaughtEventIDs[] = $this->game->addEvent($this->glang('hc_dxun'), 0, "h.png");
+
 
 			//itempools
 			$intItempoolClassic = $this->game->addItempool("SWtoR 1.0", "SWtoR 1.0 Itempool");
 			$intItempoolGalactic = $this->game->addItempool("SWtoR 2.0", "SWtoR 2.0 Itempool");
 			$intItempoolRevan = $this->game->addItempool("SWtoR 3.0", "SWtoR 3.0 Itempool");
 			$intItempoolFallen = $this->game->addItempool("SWtoR 4.0", "SWtoR 4.0 Itempool");
+			$intItempoolUprising = $this->game->addItempool("SWtoR 5.6", "SWtoR 5.6 Itempool");
+			$intItempoolOnslaught = $this->game->addItempool("SWtoR 6.0", "SWtoR 6.0 Itempool");
 
 
 			$this->game->addMultiDKPPool("SWtoR 1.0", "SWtoR MultiDKPPool", $arrClassicEventIDs, array($intItempoolClassic));
 			$this->game->addMultiDKPPool("SWtoR 2.0", "SWtoR MultiDKPPool", $arrEventIDs, array($intItempoolGalactic));
 			$this->game->addMultiDKPPool("SWtoR 3.0", "SWtoR MultiDKPPool", $arrRevanEventIDs, array($intItempoolRevan));
 			$this->game->addMultiDKPPool("SWtoR 4.0", "SWtoR MultiDKPPool", $arrFallenEventIDs, array($intItempoolFallen));
+			$this->game->addMultiDKPPool("SWtoR 5.6", "SWtoR MultiDKPPool", $arrUprisingEventIDs, array($intItempoolUprising));
+			$this->game->addMultiDKPPool("SWtoR 6.0", "SWtoR MultiDKPPool", $arrOnslaughtEventIDs, array($intItempoolOnslaught));
 
 			//Ranks
 			$this->game->addRank(0, "Guildmaster");
@@ -244,7 +261,7 @@ if(!class_exists('swtor')) {
 					'type'			=> 'spinner',
 					'category'		=> 'character',
 					'lang'			=> 'uc_level',
-					'max'			=> 70,
+					'max'			=> 75,
 					'min'			=> 1,
 					'undeletable'	=> true,
 					'sort'			=> 1,
