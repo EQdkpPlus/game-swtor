@@ -509,6 +509,38 @@ if(!class_exists('swtor')) {
 					'undeletable'	=> true,
 					'sort'			=> 30
 				),
+			  	'ruf21_value'	=> array(
+		  		'type'			=> 'int',
+		  		'category'		=> 'reputation',
+	  			'lang'			=> 'ruf21',
+		  		'size'			=> 4,
+		  		'undeletable'	=> true,
+		  		'sort'			=> 30
+			  ),
+	  			'ruf22_value'	=> array(
+	  			'type'			=> 'int',
+	  			'category'		=> 'reputation',
+	  			'lang'			=> 'ruf22',
+	  			'size'			=> 4,
+	  			'undeletable'	=> true,
+		  		'sort'			=> 30
+			  ),
+	  			'ruf23_value'	=> array(
+		  		'type'			=> 'int',
+		  		'category'		=> 'reputation',
+		  		'lang'			=> 'ruf23',
+		  		'size'			=> 4,
+		  		'undeletable'	=> true,
+		  		'sort'			=> 30
+			  ),
+	  			'ruf24_value'	=> array(
+	  			'type'			=> 'int',
+		  		'category'		=> 'reputation',
+		  		'lang'			=> 'ruf24',
+		  		'size'			=> 4,
+		  		'undeletable'	=> true,
+		  		'sort'			=> 30
+			  ),
 
 			);
 			return $fields;
