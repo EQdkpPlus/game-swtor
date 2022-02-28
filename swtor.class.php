@@ -268,7 +268,7 @@ if(!class_exists('swtor')) {
 					'type'			=> 'spinner',
 					'category'		=> 'character',
 					'lang'			=> 'uc_level',
-					'max'			=> 75,
+					'max'			=> 80,
 					'min'			=> 1,
 					'undeletable'	=> true,
 					'sort'			=> 1,
