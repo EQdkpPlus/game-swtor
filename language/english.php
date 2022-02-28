@@ -249,6 +249,8 @@ $english_array =  array(
 		'nm_mono'							=> 'Colossal Monolith (Alptraum)',
 		'sm_dxun'						=> 'Dxun (Story)',
 		'hc_dxun'						=> 'Dxun (Veteran)',
+		'sm_r4'							=> 'R4 Anomalie (Story)',
+		'hc_r4'							=> 'R4 Anomalie (Veteran)',
 
 		//realms
 	),
