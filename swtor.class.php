@@ -26,7 +26,7 @@ if ( !defined('EQDKP_INC') ){
 if(!class_exists('swtor')) {
 	class swtor extends game_generic {
 		protected static $apiLevel	= 20;
-		public $version				= '2.4.8';
+		public $version				= '2.4.9';
 		protected $this_game		= 'swtor';
 		public $author				= "Anykan (Reapers T3-M4)";
 		protected $types			= array('classes', 'races', 'factions', 'roles', 'skills','filters', 'realmlist', 'professions');
@@ -73,8 +73,8 @@ if(!class_exists('swtor')) {
 				'recruitment' => true,
 				'parent'	=> array(
 					'faction' => array(
-						'republic' 	=> array(0,1,2,3,4,5,6,7,8),	//
-						'imperial' 	=> array(0,9,10,11,12,13,14,15,16),	//
+						'republic' 	=> array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16),	//
+						'imperial' 	=> array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16),	//
 					),
 				),
 			),
@@ -109,8 +109,8 @@ if(!class_exists('swtor')) {
 		);
 
 		public $default_roles = array(
-			1 => array(2, 3, 5, 10, 11, 13),
-			2 => array(1, 6, 8, 9, 14, 16),
+			1 => array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
+			2 => array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
 			3 => array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16),
 			4 => array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
 		);
@@ -192,6 +192,11 @@ if(!class_exists('swtor')) {
 			$arrOnslaughtEventIDs[] = $this->game->addEvent($this->glang('sm_dxun'), 0, "s.png");
 			$arrOnslaughtEventIDs[] = $this->game->addEvent($this->glang('hc_dxun'), 0, "h.png");
 
+			//Operation Swtor 7.0 Legacy of the Sith
+
+			$allLotSEventIDs = array();
+			$allLotSEventIDs[] = $this->game->addEvent($this->glang('sm_dxun'), 0, "s.png");
+			$allLotSEventIDs[] = $this->game->addEvent($this->glang('hc_dxun'), 0, "h.png");
 
 			//itempools
 			$intItempoolClassic = $this->game->addItempool("SWtoR 1.0", "SWtoR 1.0 Itempool");
@@ -200,6 +205,7 @@ if(!class_exists('swtor')) {
 			$intItempoolFallen = $this->game->addItempool("SWtoR 4.0", "SWtoR 4.0 Itempool");
 			$intItempoolUprising = $this->game->addItempool("SWtoR 5.6", "SWtoR 5.6 Itempool");
 			$intItempoolOnslaught = $this->game->addItempool("SWtoR 6.0", "SWtoR 6.0 Itempool");
+			$intItempoolLotS = $this->game->addItempool("SWtoR 7.0", "SWtoR 7.0 Itempool");
 
 
 			$this->game->addMultiDKPPool("SWtoR 1.0", "SWtoR MultiDKPPool", $arrClassicEventIDs, array($intItempoolClassic));
@@ -208,6 +214,7 @@ if(!class_exists('swtor')) {
 			$this->game->addMultiDKPPool("SWtoR 4.0", "SWtoR MultiDKPPool", $arrFallenEventIDs, array($intItempoolFallen));
 			$this->game->addMultiDKPPool("SWtoR 5.6", "SWtoR MultiDKPPool", $arrUprisingEventIDs, array($intItempoolUprising));
 			$this->game->addMultiDKPPool("SWtoR 6.0", "SWtoR MultiDKPPool", $arrOnslaughtEventIDs, array($intItempoolOnslaught));
+			$this->game->addMultiDKPPool("SWtoR 7.0", "SWtoR MultiDKPPool", $allLotSEventIDs, array($intItempoolLotS));
 
 			//Ranks
 			$this->game->addRank(0, "Guildmaster");
@@ -261,7 +268,7 @@ if(!class_exists('swtor')) {
 					'type'			=> 'spinner',
 					'category'		=> 'character',
 					'lang'			=> 'uc_level',
-					'max'			=> 75,
+					'max'			=> 80,
 					'min'			=> 1,
 					'undeletable'	=> true,
 					'sort'			=> 1,
